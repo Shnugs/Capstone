@@ -1,0 +1,2 @@
+class BattleCluster < ApplicationRecord
+end
