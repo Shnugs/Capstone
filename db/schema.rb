@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_11_195610) do
+ActiveRecord::Schema.define(version: 2019_03_11_210314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2019_03_11_195610) do
     t.integer "initiative"
     t.integer "level"
     t.integer "strength"
-    t.integer "dextarity"
+    t.integer "dexterity"
     t.integer "constitution"
     t.integer "charisma"
     t.integer "wisdom"
