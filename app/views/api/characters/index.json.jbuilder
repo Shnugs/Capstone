@@ -1,1 +1,1 @@
-json.array! @characters, partial: "character", as: :cat  
+json.array! @characters, partial: "character", as: :character  

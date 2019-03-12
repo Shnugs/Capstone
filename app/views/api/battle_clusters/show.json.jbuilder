@@ -1,0 +1,1 @@
+json.partial! @battle_cluster, partial: "battle_cluster", as: :battle_cluster

@@ -1,41 +1,40 @@
 class Api::BattlesController < ApplicationController
   def index
-    @cats = Cat.all 
+    @battles = Battle.all 
     render 'index.json.jbuilder'
   end
 
   def create
-    @cat = Cat.new(
-                  first_name: params[:first_name],
-                  )
+    @battle = Battle.new(
+      win: params[:win],
+      win_initiative: params[:win_initiative],
+      dmg_taken: params[:dmg_taken],
+      dmg_dealt: params[:dmg_dealt],
+      turns: params[:turns],
+      hits: params[:hits],
+      misses: params[:misses],
+      crits: params[:crits],
+      atk_1_rate: params[:atk_1_rate],
+      atk_2_rate: params[:atk_2_rate],
+      atk_3_rate: params[:atk_3_rate],
+      cluster_id: params[:cluster_id]
+    )
     
-    if @cat.save
+    if @battle.save
       render 'show.json.jbuilder'
     else
-      render json: {errors: @cat.errors.full_messages}, status: :unprocessable_entity
+      render json: {errors: @battle.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
   def show
-    @cat = Cat.find(params[:id])
+    @battle = Battle.find(params[:id])
     render 'show.json.jbuilder'
   end
 
-  def update
-    @cat = Cat.find(params[:id])
-
-    @cat.first_name = params[:first_name] || @cat.first_name
-
-    if @cat.save
-      render 'show.json.jbuilder'
-    else
-      render json: {errors: @cat.errors.full_messages}, status: :unprocessable_entity
-    end
-  end
-
   def destroy
-    cat = Cat.find(params[:id])
-    cat.destroy
-    render json: {message: "Successfully removed cat."}
+    battle = Battle.find(params[:id])
+    battle.destroy
+    render json: {message: "Successfully removed battle."}
   end
 end

@@ -1,0 +1,1 @@
+json.partial! @battle, partial: "battle", as: :battle
