@@ -9,7 +9,7 @@ class Api::CharactersController < ApplicationController
       user_id: paramas[:user_id],
       name: paramas[:name],
       player: paramas[:player],
-      class: paramas[:class],
+      character_class: paramas[:character_class],
       race: paramas[:race],
       deity: paramas[:deity],
       max_hp: paramas[:max_hp],
@@ -80,11 +80,10 @@ class Api::CharactersController < ApplicationController
   def update
     @character = Character.find(params[:id])
 
-    @character.first_name = params[:first_name] || @character.first_name
     @character.user_id = params[:user_id] || @character.user_id
     @character.name = params[:name] || @character.name
     @character.player = params[:player] || @character.player
-    @character.class = params[:class] || @character.class
+    @character.character_class = params[:character_class] || @character.character_class
     @character.race = params[:race] || @character.race
     @character.deity = params[:deity] || @character.deity
     @character.max_hp = params[:max_hp] || @character.max_hp

@@ -1,7 +1,7 @@
 json.user_id character.user_id
 json.name character.name
 json.player character.player
-json.class character.class
+json.character_class character.character_class
 json.race character.race
 json.deity character.deity
 json.max_hp character.max_hp
