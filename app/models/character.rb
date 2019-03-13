@@ -14,17 +14,20 @@ class Character < ApplicationRecord
     base = roll(20)
     if base == 20
       return {crit: true, hit: true}
-    elsif base + weapon_1_attack >= op_stats['armor_class']
+    elsif base + weapon_1_attack >= op_stats.armor_class
       return {crit: false, hit: true}
     end
     {crit: false, hit: false}
   end
 
-  def calc_dmg(dmg)
-    rolls = dmg[0...(/d|D/ =~ dmg)].to_i
-    die = dmg[((/d|D/ =~ dmg) + 1)...(/\+|\-/ =~ dmg)].to_i
-    mod = dmg[((/\+|\-/ =~ dmg) + 1), dmg.length].to_i
-    sign = dmg[/\+|\-/ =~ dmg]
+  def calc_dmg(dmg_params)
+    rolls = dmg_params['dmg'][0...(/d|D/ =~ dmg_params['dmg'])].to_i
+    if damage_params['crit']
+      rolls *= 2
+    end
+    die = dmg_params['dmg'][((/d|D/ =~ dmg_params['dmg']) + 1)...(/\+|\-/ =~ dmg_params['dmg'])].to_i
+    mod = dmg_params['dmg'][((/\+|\-/ =~ dmg_params['dmg']) + 1), dmg_params['dmg'].length].to_i
+    sign = dmg_params['dmg'][/\+|\-/ =~ dmg_params['dmg']]
     total = 0
     rolls.times do 
       var_dmg = rand(1..die)
@@ -41,14 +44,8 @@ class Character < ApplicationRecord
     total
   end
 
-  def assign_dmg(damage_params)
-    if damage_params['hit']
-      if damage_params['crit']
-        damage_params['dmg']
-      else
-        damage_params['dmg']
-      end
-    end
+  def assign_dmg(dmg)
+    hp -= dmg
   end
 
   def dead?
