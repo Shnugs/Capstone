@@ -20,14 +20,15 @@ class Character < ApplicationRecord
     {crit: false, hit: false}
   end
 
-  def calc_dmg(dmg_params)
-    rolls = dmg_params['dmg'][0...(/d|D/ =~ dmg_params['dmg'])].to_i
-    if damage_params['crit']
+  def calc_dmg(params)
+    # {crit: true, dmg: attacker.weapon_1_dmg}
+    rolls = params[:dmg][0...(/d|D/ =~ params[:dmg])].to_i
+    if params[:crit]
       rolls *= 2
     end
-    die = dmg_params['dmg'][((/d|D/ =~ dmg_params['dmg']) + 1)...(/\+|\-/ =~ dmg_params['dmg'])].to_i
-    mod = dmg_params['dmg'][((/\+|\-/ =~ dmg_params['dmg']) + 1), dmg_params['dmg'].length].to_i
-    sign = dmg_params['dmg'][/\+|\-/ =~ dmg_params['dmg']]
+    die = params[:dmg][((/d|D/ =~ params[:dmg]) + 1)...(/\+|\-/ =~ params[:dmg])].to_i
+    mod = params[:dmg][((/\+|\-/ =~ params[:dmg]) + 1), params[:dmg].length].to_i
+    sign = params[:dmg][/\+|\-/ =~ params[:dmg]]
     total = 0
     rolls.times do 
       var_dmg = rand(1..die)
@@ -45,13 +46,10 @@ class Character < ApplicationRecord
   end
 
   def assign_dmg(dmg)
-    hp -= dmg
+    self.hp -= dmg
   end
 
   def dead?
-    if hp <= 0
-      return true
-    end
-    return false
+    self.hp <= 0
   end
 end

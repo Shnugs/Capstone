@@ -1,9 +1,9 @@
 class Battle < ApplicationRecord
   belongs_to :battles_cluster
 
-  def initialize(hero, villain)
-    @hero = hero
-    @villain = villain
+  def initialize(params)
+    @hero = params[:hero]
+    @villain = params[:villain]
   end
 
   def set_turn_order
@@ -28,7 +28,7 @@ class Battle < ApplicationRecord
   def run
     attacker, defender = set_turn_order
     until @hero.dead? || @villain.dead?
-      # TODO - The 2 here should become a variable representing the number of attacks the attacker gets per turn. 
+      # TODO - The '2' here should become a variable representing the number of attacks each attacker gets per turn. 
       # For now, this represents their standard attack + bonus attack. 
       2.times do 
         damage = 0
