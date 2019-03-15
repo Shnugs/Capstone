@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_12_145206) do
+ActiveRecord::Schema.define(version: 2019_03_15_174458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "battle_clusters", force: :cascade do |t|
-    t.integer "opponant_id"
+    t.integer "opponent_id"
     t.integer "simulation_id"
     t.decimal "win_rate", precision: 3, scale: 2
     t.decimal "initiative_rate", precision: 3, scale: 2
@@ -34,18 +34,18 @@ ActiveRecord::Schema.define(version: 2019_03_12_145206) do
   create_table "battles", force: :cascade do |t|
     t.boolean "win"
     t.boolean "win_initiative"
-    t.integer "dmg_taken"
-    t.integer "dmg_dealt"
-    t.integer "turns"
-    t.integer "hits"
-    t.integer "misses"
-    t.integer "crits"
-    t.decimal "atk_1_rate", precision: 3, scale: 2
-    t.decimal "atk_2_rate", precision: 3, scale: 2
-    t.decimal "atk_3_rate", precision: 3, scale: 2
+    t.integer "dmg_taken", default: 0
+    t.integer "dmg_dealt", default: 0
+    t.integer "turns", default: 0
+    t.integer "hits", default: 0
+    t.integer "misses", default: 0
+    t.integer "crits", default: 0
+    t.decimal "atk_1_rate", precision: 3, scale: 2, default: "0.0"
+    t.decimal "atk_2_rate", precision: 3, scale: 2, default: "0.0"
+    t.decimal "atk_3_rate", precision: 3, scale: 2, default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "cluster_id"
+    t.integer "battle_cluster_id"
   end
 
   create_table "characters", force: :cascade do |t|

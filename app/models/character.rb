@@ -1,6 +1,8 @@
 class Character < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
   has_many :simulations
+  has_many :battle_clusters, through: :simulations
+  has_many :battles, through: :battle_clusters
 
   def roll(d)
     rand(1..d)
@@ -10,11 +12,11 @@ class Character < ApplicationRecord
     initiative + roll(20)
   end
 
-  def to_hit(op_stats)
+  def to_hit(opponent_stats)
     base = roll(20)
     if base == 20
       return {crit: true, hit: true}
-    elsif base + weapon_1_attack >= op_stats.armor_class
+    elsif base + weapon_1_attack >= opponent_stats.armor_class
       return {crit: false, hit: true}
     end
     {crit: false, hit: false}
@@ -50,6 +52,6 @@ class Character < ApplicationRecord
   end
 
   def dead?
-    self.hp <= 0
+    hp <= 0
   end
 end
