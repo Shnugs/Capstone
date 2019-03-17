@@ -29,7 +29,10 @@ class Battle < ApplicationRecord
     end
   end
 
-  def run_battle(hero, villain)
+  def run_battle(first, second)
+    hero = Marshal.load(Marshal.dump(first))
+    villain = Marshal.load(Marshal.dump(second))
+    
     attacker, defender = set_turn_order(hero, villain)
     until hero.dead? || villain.dead?
       # TODO - The '2' here should become a variable representing the number of attacks each attacker gets per turn. 
@@ -61,17 +64,5 @@ class Battle < ApplicationRecord
     self.win = hero.hp > 0
 
     self.save
-
-    # puts "win:            #{self.win}"
-    # puts "win_initiative: #{self.win_initiative}"
-    # puts "dmg_taken:      #{self.dmg_taken}"
-    # puts "dmg_dealt:      #{self.dmg_dealt}"
-    # puts "turns:          #{self.turns}"
-    # puts "hits:           #{self.hits}"
-    # puts "misses:         #{self.misses}"
-    # puts "crits:          #{self.crits}"
-    # puts "atk_1_rate:     #{self.atk_1_rate}"
-    # puts "atk_2_rate:     #{self.atk_2_rate}"
-    # puts "atk_3_rate:     #{self.atk_3_rate}"
   end
 end
