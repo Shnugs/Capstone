@@ -4,7 +4,10 @@ Rails.application.routes.draw do
     post "/users" => "users#create"
     delete "/users/:id" => "users#destroy"
 
+    post "/sessions" => "sessions#create" 
+
     get "/characters" => "characters#index"
+    get "/characters/user_characters" => "characters#user_characters"
     post "/characters" => "characters#create"
     get "/characters/:id" => "characters#show"
     patch "/characters/:id" => "characters#update"
