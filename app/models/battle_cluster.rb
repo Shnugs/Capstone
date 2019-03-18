@@ -6,12 +6,16 @@ class BattleCluster < ApplicationRecord
   def run_battle_cluster(hero, villain, n_times)
     n_times.times do 
       self.opponent_id = villain.id
-      new_battle = Battle.new.run_battle(hero, villain)
+      new_battle = Battle.new
+      new_battle.battle_cluster_id = id 
+      new_battle.run_battle(hero, villain)
+      # TODO - Collect data from all battles and fill out the other BattleCluster columns
       if new_battle.save
-        puts "Successfully saved new Battle"
+        puts "Successfully saved Battle"
       else
         puts "Failed to save Battle"
       end
+      new_battle.battle_cluster_id = id
     end
   end
 

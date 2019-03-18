@@ -1,1 +1,2 @@
-json.charcter_id simulation.charcter_id
+json.id simulation.id
+json.character_id simulation.character_id

@@ -1,3 +1,4 @@
+json.id character.id
 json.user_id character.user_id
 json.name character.name
 json.player character.player

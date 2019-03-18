@@ -29,9 +29,9 @@ class Battle < ApplicationRecord
     end
   end
 
-  def run_battle(first, second)
-    hero = Marshal.load(Marshal.dump(first))
-    villain = Marshal.load(Marshal.dump(second))
+  def run_battle(hero, villain)
+    hero = Marshal.load(Marshal.dump(hero))
+    villain = Marshal.load(Marshal.dump(villain))
     
     attacker, defender = set_turn_order(hero, villain)
     until hero.dead? || villain.dead?
@@ -58,11 +58,6 @@ class Battle < ApplicationRecord
       self.turns += 1 if attacker == hero 
       attacker, defender = defender, attacker
     end
-    puts "X" * 100
-    puts "Hero HP: #{hero.hp}"
-    puts "Villain HP: #{villain.hp}"
     self.win = hero.hp > 0
-
-    self.save
   end
 end

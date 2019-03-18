@@ -4,15 +4,17 @@ class Simulation < ApplicationRecord
   has_many :battle_clusters
   has_many :battles, through: :battle_clusters
 
-  def run_simulation(hero, villains_array, n_times)
-    villains_array.each do |villain|
-      cluster = BattleCluster.new.run_battle_cluster(hero, villain, n_times)
+  def run_simulation(hero, villain_array, n_times)
+    villain_array.each do |villain|
+      cluster = BattleCluster.create
       cluster.simulation_id = id
+      cluster.run_battle_cluster(hero, villain, n_times)
       if cluster.save
-        puts "Successfully saved the Battle Cluster"
+        puts "Successfully saved Battle Cluster"
       else
         puts "Failed to save Battle Cluster"
       end
+      cluster.simulation_id = id
     end
   end
 end
