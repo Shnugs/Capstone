@@ -9,7 +9,6 @@ class BattleCluster < ApplicationRecord
       new_battle = Battle.new
       new_battle.battle_cluster_id = id 
       new_battle.run_battle(hero, villain)
-      # TODO - Collect data from all battles and fill out the other BattleCluster columns
       if new_battle.save
         puts "Successfully saved Battle"
       else

@@ -18,15 +18,15 @@ ActiveRecord::Schema.define(version: 2019_03_18_180932) do
   create_table "battle_clusters", force: :cascade do |t|
     t.integer "opponent_id"
     t.integer "simulation_id"
-    t.decimal "win_rate", precision: 3, scale: 2
-    t.decimal "initiative_rate", precision: 3, scale: 2
-    t.decimal "avg_dmg_taken", precision: 3, scale: 2
-    t.decimal "avg_dmg_dealt", precision: 3, scale: 2
-    t.decimal "avg_dmg_taken_per_turn", precision: 3, scale: 2
-    t.decimal "avg_dmg_dealt_per_turn", precision: 3, scale: 2
-    t.decimal "avg_turns", precision: 3, scale: 2
-    t.decimal "hit_rate", precision: 3, scale: 2
-    t.decimal "crit_rate", precision: 3, scale: 2
+    t.decimal "win_rate", precision: 6, scale: 2
+    t.decimal "initiative_rate", precision: 6, scale: 2
+    t.decimal "avg_dmg_taken", precision: 6, scale: 2
+    t.decimal "avg_dmg_dealt", precision: 6, scale: 2
+    t.decimal "avg_dmg_taken_per_turn", precision: 6, scale: 2
+    t.decimal "avg_dmg_dealt_per_turn", precision: 6, scale: 2
+    t.decimal "avg_turns", precision: 6, scale: 2
+    t.decimal "hit_rate", precision: 6, scale: 2
+    t.decimal "crit_rate", precision: 6, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -40,9 +40,9 @@ ActiveRecord::Schema.define(version: 2019_03_18_180932) do
     t.integer "hits", default: 0
     t.integer "misses", default: 0
     t.integer "crits", default: 0
-    t.decimal "atk_1_rate", precision: 3, scale: 2, default: "0.0"
-    t.decimal "atk_2_rate", precision: 3, scale: 2, default: "0.0"
-    t.decimal "atk_3_rate", precision: 3, scale: 2, default: "0.0"
+    t.decimal "atk_1_rate", precision: 6, scale: 2, default: "0.0"
+    t.decimal "atk_2_rate", precision: 6, scale: 2, default: "0.0"
+    t.decimal "atk_3_rate", precision: 6, scale: 2, default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "battle_cluster_id"
