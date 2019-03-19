@@ -18,7 +18,7 @@ json.charisma character.charisma
 json.wisdom character.wisdom
 json.intelligence character.intelligence
 json.strength_mod character.strength_mod
-json.dextarity_mod character.dextarity_mod
+json.dexterity_mod character.dexterity_mod
 json.constitution_mod character.constitution_mod
 json.charisma_mod character.charisma_mod
 json.wisdom_mod character.wisdom_mod

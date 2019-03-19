@@ -32,7 +32,7 @@ class Api::CharactersController < ApplicationController
       wisdom: params[:wisdom],
       intelligence: params[:intelligence],
       strength_mod: params[:strength_mod],
-      dextarity_mod: params[:dextarity_mod],
+      dexterity_mod: params[:dexterity_mod],
       constitution_mod: params[:constitution_mod],
       charisma_mod: params[:charisma_mod],
       wisdom_mod: params[:wisdom_mod],
@@ -106,7 +106,7 @@ class Api::CharactersController < ApplicationController
     @character.wisdom = params[:wisdom] || @character.wisdom
     @character.intelligence = params[:intelligence] || @character.intelligence
     @character.strength_mod = params[:strength_mod] || @character.strength_mod
-    @character.dextarity_mod = params[:dextarity_mod] || @character.dextarity_mod
+    @character.dexterity_mod = params[:dexterity_mod] || @character.dexterity_mod
     @character.constitution_mod = params[:constitution_mod] || @character.constitution_mod
     @character.charisma_mod = params[:charisma_mod] || @character.charisma_mod
     @character.wisdom_mod = params[:wisdom_mod] || @character.wisdom_mod

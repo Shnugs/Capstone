@@ -107,7 +107,7 @@ class Character < ApplicationRecord
   #         wisdom: response["wisdom"],
   #         intelligence: response["intelligence"],
   #         strength_mod: ((response["strength"] - 10) / 2),
-  #         dextarity_mod: ((response["dexterity"] - 10) / 2),
+  #         dexterity_mod: ((response["dexterity"] - 10) / 2),
   #         constitution_mod: ((response["constitution"] - 10) / 2),
   #         charisma_mod: ((response["charisma"] - 10) / 2),
   #         wisdom_mod: ((response["wisdom"] - 10) / 2),

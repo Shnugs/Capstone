@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_18_180932) do
+ActiveRecord::Schema.define(version: 2019_03_19_191102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2019_03_18_180932) do
     t.integer "wisdom"
     t.integer "intelligence"
     t.integer "strength_mod"
-    t.integer "dextarity_mod"
+    t.integer "dexterity_mod"
     t.integer "constitution_mod"
     t.integer "charisma_mod"
     t.integer "wisdom_mod"
