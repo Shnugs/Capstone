@@ -13,7 +13,7 @@ class Api::CharactersController < ApplicationController
 
   def create
     @character = Character.new(
-      user_id: params[:user_id],
+      user_id: current_user.id,
       name: params[:name],
       player: params[:player],
       character_class: params[:character_class],
