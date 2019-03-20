@@ -11,6 +11,11 @@ class Api::CharactersController < ApplicationController
     end
   end
 
+  def filter
+    @characters = Character.where("name LIKE ?", "%#{params['filters']}%".titleize).limit(10)
+    render 'index.json.jbuilder'
+  end
+
   def create
     @character = Character.new(
       user_id: current_user.id,

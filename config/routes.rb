@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
     get "/characters" => "characters#index"
     get "/characters/user_characters" => "characters#user_characters"
+    get "/characters/filter" => "characters#filter"
     post "/characters" => "characters#create"
     get "/characters/:id" => "characters#show"
     patch "/characters/:id" => "characters#update"
