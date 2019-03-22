@@ -1,5 +1,5 @@
 json.id battle_cluster.id
-# json.opponent_id battle_cluster.opponent_id
+json.opponent_id battle_cluster.opponent_id
 json.simulation_id battle_cluster.simulation_id
 json.win_rate battle_cluster.win_rate
 json.initiative_rate battle_cluster.initiative_rate

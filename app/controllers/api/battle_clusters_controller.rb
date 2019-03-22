@@ -16,6 +16,11 @@ class Api::BattleClustersController < ApplicationController
     end
   end
 
+  def get
+    @battle_clusters = BattleCluster.where(simulation_id: params[:id])
+    render 'index.json.jbuilder'
+  end
+
   def show
     @battle_cluster = BattleCluster.find(params[:id])
     render 'show.json.jbuilder'

@@ -16,6 +16,11 @@ class Api::SimulationsController < ApplicationController
     end
   end
 
+  def get
+    @simulations = Simulation.where(character_id: params[:id])
+    render 'index.json.jbuilder'
+  end
+
   def show
     @simulation = Simulation.find(params[:id])
     render 'show.json.jbuilder'

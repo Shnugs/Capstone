@@ -59,7 +59,7 @@ class Character < ApplicationRecord
   def new_simulation(villain_array, n_times)
     new_sim = Simulation.create
     new_sim.character_id = id
-    new_sim.run_simulation(self, villain_array, n_times)
+    new_sim.run_simulation(villain_array, n_times, self)
     if new_sim.save
       puts "Successfully saved Simulation"
     else

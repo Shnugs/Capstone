@@ -16,11 +16,13 @@ Rails.application.routes.draw do
 
     get "/simulations" => "simulations#index"
     post "/simulations" => "simulations#create"
+    get "/simulations/get/:id" => "simulations#get"
     get "/simulations/:id" => "simulations#show"
     delete "/simulations/:id" => "simulations#destroy"
 
     get "/battle_clusters" => "battle_clusters#index"
     post "/battle_clusters" => "battle_clusters#create"
+    get "/battle_clusters/get/:id" => "battle_clusters#get"
     get "/battle_clusters/:id" => "battle_clusters#show"
     delete "/battle_clusters/:id" => "battle_clusters#destroy"
 
