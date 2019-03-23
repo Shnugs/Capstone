@@ -12,7 +12,7 @@ class Api::CharactersController < ApplicationController
   end
 
   def filter
-    @characters = Character.where("name LIKE ?", "%#{params['filters']}%".titleize).limit(10)
+    @characters = Character.where("name LIKE ?", "#{params['filters']}%".titleize).limit(10)
     render 'index.json.jbuilder'
   end
 
