@@ -12,7 +12,7 @@ class Api::CharactersController < ApplicationController
   end
 
   def filter
-    @characters = Character.where("name LIKE ?", "%#{params['filters']}%".titleize).limit(10)
+    @characters = Character.where("name LIKE ?", "#{params['filters']}%".titleize).limit(10)
     render 'index.json.jbuilder'
   end
 
@@ -82,6 +82,20 @@ class Api::CharactersController < ApplicationController
     else
       render json: {errors: @character.errors.full_messages}, status: :unprocessable_entity
     end
+  end
+
+  def run_sim
+    villains = []
+    params["villains"].each do |villain_id|
+      villains << Character.find(villain_id)
+    end
+    puts "*" * 150
+    p villains
+    p params[:hero]
+    p params["iterations"]
+    puts "*" * 150
+    Character.find(params["hero"]).new_simulation(villains, params["iterations"].to_i)
+    render json: {message: "Ran simulation!"}
   end
 
   def show
