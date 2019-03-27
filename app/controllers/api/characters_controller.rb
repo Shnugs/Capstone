@@ -74,7 +74,8 @@ class Api::CharactersController < ApplicationController
       alignment: params[:alignment],
       hair: params[:hair],
       eyes: params[:eyes],
-      caster: params[:caster]
+      caster: params[:caster],
+      profile_url: params[:profile_url]
       )
 
     if @character.save
@@ -163,6 +164,7 @@ class Api::CharactersController < ApplicationController
     @character.hair = params[:hair] || @character.hair
     @character.eyes = params[:eyes] || @character.eyes
     @character.caster = params[:caster] || @character.caster
+    @character.profile_url = params[:profile_url] || @character.profile_url
 
     if @character.save
       render 'show.json.jbuilder'

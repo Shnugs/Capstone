@@ -56,3 +56,4 @@ json.alignment character.alignment
 json.hair character.hair
 json.eyes character.eyes
 json.caster character.caster
+json.profile_url character.profile_url
